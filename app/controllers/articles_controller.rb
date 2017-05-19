@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ArticlesController < OpenReadController
   before_action :set_article, only: [:show, :update, :destroy]
 
@@ -20,10 +18,10 @@ class ArticlesController < OpenReadController
   # POST /articles
   # POST /articles.json
   def create
-    @article = current_user.articles.build(article_params)
+    @article = Article.new(article_params)
 
     if @article.save
-      render json: @article, status: :created
+      render json: @article, status: :created, location: @article
     else
       render json: @article.errors, status: :unprocessable_entity
     end
@@ -32,8 +30,10 @@ class ArticlesController < OpenReadController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @article = Article.find(params[:id])
+
     if @article.update(article_params)
-      render json: @article
+      head :no_content
     else
       render json: @article.errors, status: :unprocessable_entity
     end
@@ -43,15 +43,17 @@ class ArticlesController < OpenReadController
   # DELETE /articles/1.json
   def destroy
     @article.destroy
+
+    head :no_content
   end
 
   private
 
-  def set_article
-    @article = Article.find(params[:id])
-  end
+    def set_article
+      @article = Article.find(params[:id])
+    end
 
-  def article_params
-    params.require(:article).permit(:Title, :Body)
-  end
+    def article_params
+      params.require(:article).permit(:title, :overview, :body)
+    end
 end

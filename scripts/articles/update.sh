@@ -10,7 +10,7 @@ curl "${API}${URL_PATH}" \
   --data '{
     "article": {
       "title": "'"${TITLE}"'",
-      "body": "'"${BODY}"'",
+      "body": "'"${BODY}"'"
     }
   }'
 
