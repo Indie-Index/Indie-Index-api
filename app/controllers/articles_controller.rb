@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ArticlesController < OpenReadController
   before_action :set_article, only: [:show, :update, :destroy]
 
@@ -49,11 +50,11 @@ class ArticlesController < OpenReadController
 
   private
 
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    def article_params
-      params.require(:article).permit(:title, :overview, :body)
-    end
+  def article_params
+    params.require(:article).permit(:title, :overview, :body)
+  end
 end
