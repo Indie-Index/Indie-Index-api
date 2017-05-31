@@ -1,7 +1,7 @@
 class CreateUis < ActiveRecord::Migration
   def change
     create_table :uis do |t|
-      t.string :category
+      t.string :catagory
       t.string :convention
       t.string :overview
       t.string :carousel

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170524171442) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "uis", force: :cascade do |t|
-    t.string   "category"
+    t.string   "catagory"
     t.string   "convention"
     t.string   "overview"
     t.string   "carousel"

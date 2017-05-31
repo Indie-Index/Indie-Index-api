@@ -55,6 +55,6 @@ class UisController < OpenReadController
   end
 
   def ui_params
-    params.require(:ui).permit(:title, :overview, :body)
+    params.require(:ui).permit(:catagory, :convention, :overview, :carousel, :body)
   end
 end

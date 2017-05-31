@@ -1,3 +1,3 @@
 class UiSerializer < ActiveModel::Serializer
-  attributes :id, :category, :convention, :overview, :carousel, :body
+  attributes :id, :catagory, :convention, :overview, :carousel, :body
 end
